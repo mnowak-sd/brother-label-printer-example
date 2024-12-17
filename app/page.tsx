@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import BrotherSdk from "bpac-js";
+import path from 'path';
 
 interface LabelOptions {
   copies: number,
@@ -18,11 +19,13 @@ export default function Home() {
   const [transactionId, setTransactionId] = useState<string>("123");
   const [barcode, setBarcode] = useState<string>("00000123-123");
 
+  const templatePath = 'http://localhost:3000/static/templates/MaterialStorageTemplateUpdated.lbx';
+
   useEffect(() => {
     if (!sdk) {
       const brotherSdk = new BrotherSdk({
-        templatePath: "C:/Users/MNOWAK6/code/scratch/test-printer/public/static/templates/MaterialStorageTemplateUpdated.lbx",
-        exportDir: "C:/Users/MNOWAK6/code/scratch/test-printer/public/static/templates/exports/",
+        templatePath: templatePath,
+        exportDir: 'C:/Users/MNOWAK6/code/scratch/test-printer/public/static/templates/exports/',
       });
 
       setSdk(brotherSdk);
